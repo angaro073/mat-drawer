@@ -4,7 +4,8 @@
       type="button"
       aria-label="Toggle drawer"
       mat-icon-button
-      (click)="drawer.toggle()">
+      (click)="drawer.toggle()"
+    >
       <mat-icon aria-label="Drawer toggle icon">menu</mat-icon>
     </button>
   }
@@ -18,11 +19,14 @@
   }
 </mat-toolbar>
 <mat-drawer-container class="drawer-container">
-  <mat-drawer #drawer id="drawer" class="drawer" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-			[opened]="!(isHandset$ | async) ? false : false"
-			[ngClass]="{hidden: !(isHandset$ | async)}"
-			>
+  <mat-drawer
+    #drawer
+    id="drawer"
+    class="drawer"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+		[ngClass]="{hidden: !(isHandset$ | async)}"
+	>
     <mat-toolbar color="accent">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
