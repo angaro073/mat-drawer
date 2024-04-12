@@ -1,14 +1,15 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, inject } from '@angular/core';
+
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { AsyncPipe, NgClass } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import { HideDirective } from './hide.directive';
+import { map, shareReplay } from 'rxjs/operators';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-root',
@@ -22,18 +23,11 @@ import { HideDirective } from './hide.directive';
     MatListModule,
     MatIconModule,
     AsyncPipe,
-		HideDirective,
 		NgClass
   ]
 })
 export class AppComponent {
   private breakpointObserver = inject(BreakpointObserver);
-	@ViewChild('drawer') matDrawer: ElementRef<MatDrawer>;
-
-	constructor() {
-		this.matDrawer = inject(ElementRef);
-	}
-  // ERROR: We need to hide under the Handset breakpoint
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(max-width: 599.98px)')
     .pipe(
