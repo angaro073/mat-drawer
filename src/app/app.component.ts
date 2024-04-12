@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
@@ -22,7 +22,8 @@ import { HideDirective } from './hide.directive';
     MatListModule,
     MatIconModule,
     AsyncPipe,
-		HideDirective
+		HideDirective,
+		NgClass
   ]
 })
 export class AppComponent {
@@ -38,9 +39,5 @@ export class AppComponent {
     .pipe(
       map(result => result.matches),
       shareReplay(),
-			tap((result) => {
-				if (result)
-					this.matDrawer.nativeElement.toggle();
-			})
     );
 }

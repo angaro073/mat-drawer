@@ -18,10 +18,10 @@
   }
 </mat-toolbar>
 <mat-drawer-container class="drawer-container">
-
   <mat-drawer #drawer id="drawer" class="drawer" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
 			[opened]="!(isHandset$ | async) ? false : false"
+			[ngClass]="{hidden: !(isHandset$ | async)}"
 			>
     <mat-toolbar color="accent">Menu</mat-toolbar>
     <mat-nav-list>
